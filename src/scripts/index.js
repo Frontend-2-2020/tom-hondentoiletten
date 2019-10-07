@@ -28,15 +28,11 @@ callMarkers();
 
 
 // haalt data op uit de databank
-let hondentegels = [];
-let hondentegelscoordinaten = [];
-
-
+let hondentegelscoordinaten;
 function callMarkers() {
     Axios.get("https://datatank.stad.gent/4/infrastructuur/hondenvoorzieningen.geojson")
     .then(function (response) {
-        hondentegels=response.data;
-        hondentegelscoordinaten=hondentegels.coordinates;
+        hondentegelscoordinaten=response.data.coordinates;
         zetMarkers();
         console.log(response);  
     });
